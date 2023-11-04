@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\PurchaseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test/org', [OrganizationController::class, 'test']);
+Route::get('/test/pur', [PurchaseController::class, 'test']);

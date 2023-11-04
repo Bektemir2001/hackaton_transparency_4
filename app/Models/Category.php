@@ -5,15 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Purchase extends Model
+class Category extends Model
 {
     use HasFactory;
-
-    protected $table = 'purchases';
+    protected $table = 'categories';
     protected $guarded = false;
-
-    public function status()
-    {
-        return $this->belongsTo(PurchaseStatus::class, 'status');
-    }
 }

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PurchaseStatus extends Model
 {
     use HasFactory;
+
+    protected $table = 'purchase_statuses';
+    protected $guarded = false;
 }
