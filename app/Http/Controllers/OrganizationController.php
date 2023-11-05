@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Organization;
 use App\Services\Organization\OrganizationService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -47,5 +48,24 @@ class OrganizationController extends Controller
             $organization = $organization->where('registration_number', 'like', '%' . $request->registration_number . '%');
         }
         return response($organization->paginate(20));
+    }
+
+    public function graphicSuccessForMonth(Organization $organization, Request $request)
+    {
+        $currentMonth = Carbon::now();
+        if($request->month)
+        {
+            $monthsToSubtract = (int)$request->month;
+            $currentMonth->subMonths($monthsToSubtract);
+        }
+        return response(['data' => $this->organizationService->getSuccessForMonth($organization->id, $currentMonth)]);
+
+    }
+
+    public function countForDiagram(Organization $organization)
+    {
+        $result = $this->organizationService->diagram($organization->id);
+
+        return response(['data' => $result]);
     }
 }

@@ -5,14 +5,14 @@ use Illuminate\Support\Facades\Http;
 
 class Gpt4Service
 {
-    public function gpt_purchase()
+    public function gpt_purchase($content)
     {
         $data = [
             'model' => 'gpt-3.5-turbo',
             'messages' => [
                 [
                     'role' => 'user',
-                    'content' => 'CONTENT',
+                    'content' => '',
                 ],
             ],
         ];
