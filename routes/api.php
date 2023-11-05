@@ -43,3 +43,11 @@ Route::group(['prefix' => 'categories'], function (){
 Route::group(['prefix' => 'region'], function (){
     Route::get('/{region}', [RegionController::class, 'graphicSuccessForMonth']);
 });
+
+//Route::get('/change/gpt', function (){
+//    $purchases = \App\Models\Purchase::all();
+//    foreach ($purchases as $purchase){
+//        $purchase->update(['gpt_analyze' => rand(70, 100)]);
+//    }
+//    return response(['data' => 'finish']);
+//});

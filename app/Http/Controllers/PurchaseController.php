@@ -18,7 +18,7 @@ class PurchaseController extends Controller
         ->join('organizations as o', 'o.id', '=', 'p.organization_id')
         ->select('p.name', 'p.registration_number', 'p.additional_contact_info',
         'p.starting_price', 'p.currency_title', 'p.purchase_start_datetime', 'p.purchase_end_datetime', 'p.proposal_validity_days', 'p.fee_amount', 'status.title as status',
-        'c.name as category', 'o.name as organization', 'p.id',
+        'c.name as category', 'o.name as organization', 'p.id','p.gpt_analyze',
             DB::raw("JSON_UNQUOTE(JSON_EXTRACT(p.product, '$.title')) as product"))
         ->where('p.name', '!=', null);
         if($request->categoryId)
